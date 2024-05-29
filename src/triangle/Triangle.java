@@ -38,16 +38,13 @@ public class Triangle implements ResizableImage {
         //border = 8;
         //gBuffer.drawRect(border, border, size.width - 2 * border, size.height - 2 * border);
         //gBuffer.drawString("Triangle goes here", border * 2, border * 4);
-        int limiter;
+        int h = size.height;
+        int s = (int) (h * 2 / Math.sqrt(3));
+        int x = size.width / 2;
+        int y = 0;
 
-        if(size.height >= size.width){
-            limiter = size.width;
-        } else {
-            limiter = size.height;
-        }
-
-        gBuffer.drawPolygon(new int[]{0, limiter / 2, limiter}, new int[]{limiter, 0, limiter}, 3);
-        gBuffer.setColor(Color.black);
+        gBuffer.fillPolygon(new int[]{x, x - s / 2, x + s / 2}, new int[]{y, (int) (y + Math.sqrt(3) / 2 * s), (int) (y + Math.sqrt(3) / 2 * s)}, 3);
+        gBuffer.setColor(Color.blue);
         return bufferedImage;
     }
 
