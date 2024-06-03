@@ -21,7 +21,7 @@ import static resizable.Debug.print;
  *
  */
 public class Triangle implements ResizableImage {
-    int drawTriangle = 0;
+    int drawTriangle = 1;
     /**
      * change this method to implement the triangle!
      * @param size the outer bounds of the triangle
@@ -39,7 +39,7 @@ public class Triangle implements ResizableImage {
 
         gBuffer.setColor(Color.black);
         drawSierpinski(gBuffer, x, y, x - s / 2, (int) (y + Math.sqrt(3) / 2 * s), x + s / 2, (int) (y + Math.sqrt(3) / 2 * s), levels, levels);
-
+      
         return bufferedImage;
     }
 
