@@ -55,18 +55,22 @@ public class Triangle implements ResizableImage {
         int x31 = (x3 + x1) / 2;
         int y31 = (y3 + y1) / 2;
 
-        g.drawLine(x1, y1, x2, y2);
-        g.drawLine(x2, y2, x3, y3);
-        g.drawLine(x3, y3, x1, y1);
+        int colorPickerNumberR = (int) (Math.random() * 8);
+        int colorPickerNumberG = (int) (Math.random() * 8);
+        int colorPickerNumberB = (int) (Math.random() * 8);
+
+        g.setColor(new Color(colorPickerNumberR*32, colorPickerNumberG*32, colorPickerNumberB*32));
+
+        int[] xPoints = {x1, x2, x3, x12, x23, x31};
+        int[] yPoints = {y1, y2, y3, y12, y23, y31};
+
+        g.fillPolygon(xPoints, yPoints, 3);
+        g.fillPolygon(xPoints, yPoints, 3 + 3);
 
         if (level > 1) {
             drawSierpinski(g, x1, y1, x12, y12, x31, y31, level - 1, maxLevel);
             drawSierpinski(g, x12, y12, x2, y2, x23, y23, level - 1, maxLevel);
             drawSierpinski(g, x23, y23, x3, y3, x31, y31, level - 1, maxLevel);
-        } else {
-            g.drawLine(x12, y12, x23, y23);
-            g.drawLine(x23, y23, x31, y31);
-            g.drawLine(x31, y31, x12, y12);
         }
     }
 
@@ -77,7 +81,7 @@ public class Triangle implements ResizableImage {
     public Image getImage(Dimension triangleSize) {
         if (triangleSize.equals(bufferedImageSize))
             return bufferedImage;
-        bufferedImage = drawTriangle(triangleSize, 4);
+        bufferedImage = drawTriangle(triangleSize, 2);
         bufferedImageSize = triangleSize;
         return bufferedImage;
     }
