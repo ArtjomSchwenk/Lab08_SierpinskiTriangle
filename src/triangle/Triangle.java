@@ -33,18 +33,17 @@ public class Triangle implements ResizableImage {
         Graphics2D gBuffer = (Graphics2D) bufferedImage.getGraphics();
         gBuffer.setColor(Color.black);
         int border = 2;
-        //gBuffer.drawRect(border, border, size.width - 2 * border, size.height - 2 * border);
-        //gBuffer.setColor(Color.darkGray);
-        //border = 8;
-        //gBuffer.drawRect(border, border, size.width - 2 * border, size.height - 2 * border);
-        //gBuffer.drawString("Triangle goes here", border * 2, border * 4);
+        /*gBuffer.drawRect(border, border, size.width - 2 * border, size.height - 2 * border);
+        gBuffer.setColor(Color.darkGray);
+        border = 8;
+        gBuffer.drawRect(border, border, size.width - 2 * border, size.height - 2 * border);
+        gBuffer.drawString("Triangle goes here", border * 2, border * 4);*/
         int h = size.height;
         int s = (int) (h * 2 / Math.sqrt(3));
         int x = size.width / 2;
         int y = 0;
-
-        gBuffer.fillPolygon(new int[]{x, x - s / 2, x + s / 2}, new int[]{y, (int) (y + Math.sqrt(3) / 2 * s), (int) (y + Math.sqrt(3) / 2 * s)}, 3);
         gBuffer.setColor(Color.blue);
+        gBuffer.fillPolygon(new int[]{x, x - s / 2, x + s / 2}, new int[]{y, (int) (y + Math.sqrt(3) / 2 * s), (int) (y + Math.sqrt(3) / 2 * s)}, 3);
         return bufferedImage;
     }
 
